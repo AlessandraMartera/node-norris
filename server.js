@@ -17,6 +17,6 @@ http
         const serverUrl = `http://${host}:${port}`
         console.log(`Server avviato su ${serverUrl}`);
         
-        console.log(sum());
+        console.log(sum(1,2));
  });
 
