@@ -6,7 +6,7 @@ const host = process.env.HOST || "localhost";
 
 const url = "https://api.chucknorris.io/jokes/random";
 require('dotenv').config()
-
+const fs = require('fs');
 /*
 const serverAsync = http.createServer((req, res) => {
   loadAjaxData((users) => {
@@ -30,12 +30,26 @@ const serverAsync = http.createServer((req, res) => {
 http
     .createServer(function (req, res) {
         res.setHeader("Content-Type", "text/html;charset=utf-8");
-        const html= []
+        // const jokes = [];
         
         fetch(`https://api.chucknorris.io/jokes/random`)
             .then(response => response.json())
-            .then(data => {console.log(data.value)
+            .then(data => {
+                console.log(data.value)
+
             res.end(`<h1>${data.value}</h1>`)
+    
+            
+            // jokes.push(data.value);
+
+            const jsonToAdd = JSON.stringify(data.value)
+          
+            // scrittura file
+            fs.appendFile("myData.json", jsonToAdd,
+            function (err) {
+            if (err) throw err;
+
+            console.log("Saved!");});
         });
         
 
@@ -47,12 +61,5 @@ http
         const serverUrl = `http://${host}:${port}`
         console.log(`Server avviato su ${serverUrl}`);
         
-        // console.log(loadStringNorris());
-        // loadStringNorris().forEach(element => {
-        //     console.log("frase n");
-        //     console.log(element);
-        // });
-
-        // console.log(loadAjaxgNorris());
  });
 

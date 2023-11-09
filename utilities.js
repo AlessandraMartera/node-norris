@@ -17,6 +17,7 @@ function loadStringNorris(){
         //     return stringNorris;
         // });
         
+    // altro tipo di lettura file
         try {
             /**
              * @type {string}
