@@ -12,9 +12,11 @@ function loadStringNorris(){
 
      // lettura file
         // fs.readFile( pathData, function(err, data) {
-        //     console.log(data);
+        //     // const norrisString = ;
+        //     const stringNorris = JSON.parse(data.toString());
+        //     return stringNorris;
         // });
-
+        
         try {
             /**
              * @type {string}
@@ -31,8 +33,19 @@ function loadStringNorris(){
 
 }
 
+function loadAjaxgNorris(){
+    const url = "https://api.chucknorris.io/jokes/random";
+
+    fetch(url)
+        .then(response => response.json())
+        .then((data) => 
+        data.value);
+
+}
+
 module.exports = {
     sum,
-    loadStringNorris
+    loadStringNorris,
+    loadAjaxgNorris
    };
    
